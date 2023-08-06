@@ -65,7 +65,7 @@ main() {
     echo "#EXTM3U" > "$PLAYLIST_NAME.m3u"
 
     # Download videos and write titles to the playlist file
-    yt-dlp $FORMAT --write-subs --exec "echo {} >> \"$PLAYLIST_NAME.m3u\"" "$PLAYLIST_URL"
+    yt-dlp $FORMAT --write-subs --exec "basename {} >> \"$PLAYLIST_NAME.m3u\"" "$PLAYLIST_URL"
 }
 
 # Call the main function with all command line arguments
