@@ -10,6 +10,7 @@ show_help() {
     echo "Options:"
     echo "  -h, --help         Display this help message"
     echo "  -a, --audio-only   Download only audio from the videos"
+    echo "  -s, --subtitles    Download subtitles for the videos"
 }
 
 # Function to check if yt-dlp is installed
@@ -23,8 +24,9 @@ check_yt_dlp() {
 # Main function
 main() {
     check_yt_dlp
-    # Default format
+    # Default format and subtitles
     FORMAT=""
+    SUBTITLES=""
 
     while :; do
         case $1 in
@@ -34,6 +36,9 @@ main() {
             ;;
             -a|--audio-only)
                 FORMAT="-f bestaudio"
+            ;;
+            -s|--subtitles)
+                SUBTITLES="--write-subs"
             ;;
             --)
                 shift
@@ -65,7 +70,7 @@ main() {
     echo "#EXTM3U" > "$PLAYLIST_NAME.m3u"
 
     # Download videos and write titles to the playlist file
-    yt-dlp $FORMAT --write-subs --exec "basename {} >> \"$PLAYLIST_NAME.m3u\"" "$PLAYLIST_URL"
+    yt-dlp $FORMAT $SUBTITLES --exec "basename {} >> \"$PLAYLIST_NAME.m3u\"" "$PLAYLIST_URL"
 }
 
 # Call the main function with all command line arguments
