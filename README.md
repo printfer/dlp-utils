@@ -34,6 +34,7 @@ wget -qO- https://raw.githubusercontent.com/printfer/dlp-utils/master/dlp-utils.
 
 * You must provide a valid playlist URL.
 * The script checks if `yt-dlp` is installed before running. If `yt-dlp` is not installed, it will print a message asking to install `yt-dlp`.
+* For the thumbnail embedding functionality, additional dependencies might be required. On Arch Linux, for example, you may need to install the `atomicparsley` and/or `python-mutagen` packages to embed thumbnails in specific media formats. Ensure to check and install necessary packages for your operating system to make use of this feature.
 
 ## License
 
