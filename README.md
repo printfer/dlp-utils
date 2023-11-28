@@ -2,7 +2,9 @@
 
 This is a utility script for `yt-dlp`, a powerful command-line program used to download videos from various video platforms.
 
-## Usage
+## Getting Started
+
+### Local Installation and Usage
 
 To use `dlp-utils`, first download the script to your local system. Then change the permissions of the script to make it executable:
 
@@ -16,25 +18,43 @@ After that, simply run:
 ./dlp-utils [OPTIONS] <playlist URL>
 ```
 
-If you want to run the script directly from an online source without manually downloading it, you can do so with `curl` or `wget`.
+### Running Directly Online
 
-Using curl:
+You can also run the script directly from an online source without a local installation, using either `curl` or `wget`:
+
+**Using curl:**
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/printfer/dlp-utils/master/dlp-utils.sh | sh -s -- [OPTIONS] <playlist URL>
 ```
 
-Using wget:
+**Using wget:**
 
 ```bash
 wget -qO- https://raw.githubusercontent.com/printfer/dlp-utils/master/dlp-utils.sh | sh -s -- [OPTIONS] <playlist URL>
 ```
 
-## Notes
+## Options
 
-* You must provide a valid playlist URL.
-* The script checks if `yt-dlp` is installed before running. If `yt-dlp` is not installed, it will print a message asking to install `yt-dlp`.
-* For the thumbnail embedding functionality, additional dependencies might be required. On Arch Linux, for example, you may need to install the `atomicparsley` and/or `python-mutagen` packages to embed thumbnails in specific media formats. Ensure to check and install necessary packages for your operating system to make use of this feature.
+The `dlp-utils` script supports several options to customize your download:
+
+```
+Usage: dlp-utils [OPTIONS] <playlist URL>
+Options:
+  -h, --help           Display this help message
+  -v, --version        Show the version of the script
+  -a, --audio-only     Download audio-only format of the media
+  -s, --subtitles      Download all available subtitles
+  -l, --language LANG  Specify subtitle language(s) as a comma-separated list. Refer to yt-dlp's --sub-langs format for more details.
+  -m, --metadata       Embed metadata into the downloaded media
+  -t, --thumbnail      Embed thumbnail into the downloaded media
+```
+
+## Additional Notes
+
+- Make sure to provide a valid playlist URL when using the script.
+- `yt-dlp` must be installed for the script to run. It will prompt for installation if not found.
+- For the thumbnail embedding functionality, additional dependencies might be required. On Arch Linux, for example, you may need to install the `atomicparsley` and/or `python-mutagen` packages to embed thumbnails in specific media formats. Ensure to check and install necessary packages for your operating system to make use of this feature.
 
 ## License
 
